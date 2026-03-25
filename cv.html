@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简介 - 我的小世界</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Sans SC", sans-serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.7;
+            transition: all 0.3s;
+            padding-bottom: 60px;
+        }
+
+        body.dark {
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 头部卡片 */
+        .profile-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        body.dark .profile-card {
+            background: #1e1e1e;
+            box-shadow: none;
+        }
+
+        /* 头像变大 */
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .tag {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        body.dark .tag {
+            color: #aaa;
+        }
+
+        /* 信息列表 */
+        .info-list {
+            list-style: none;
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .info-list li {
+            padding: 8px 0;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        body.dark .info-list li {
+            border-color: #333;
+        }
+
+        /* 模块标题 */
+        .section-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 40px 0 20px;
+            padding-left: 10px;
+            border-left: 4px solid #666;
+        }
+
+        body.dark .section-title {
+            border-color: #aaa;
+        }
+
+        /* 旅行地图 */
+        .travel-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .place {
+            background: #f5f5f5;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        body.dark .place {
+            background: #2a2a2a;
+        }
+
+        /* 作品卡片 - 可展开收起 */
+        .work-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+            cursor: pointer;
+        }
+
+        body.dark .work-card {
+            background: #1e1e1e;
+            box-shadow: none;
+        }
+
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .work-title {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .work-toggle {
+            font-size: 18px;
+        }
+
+        .work-content {
+            font-size: 14px;
+            color: #555;
+            white-space: pre-line;
+            margin-top: 12px;
+            display: none;
+        }
+
+        body.dark .work-content {
+            color: #ccc;
+        }
+
+        .work-content.show {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 暗色按钮 */
+        .theme-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: #fff;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 99;
+        }
+
+        body.dark .theme-toggle {
+            background: #222;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- 个人卡片 -->
+        <div class="profile-card">
+            <img src="zp.png" alt="头像" class="avatar">
+            <h1 class="name">宋艳阳</h1>
+            <p class="tag">热爱生活 · 喜欢写诗 · 行走四方</p>
+
+            <ul class="info-list">
+                <li><span>学历</span><span>中科大博士生在读</span></li>
+                <li><span>生日</span><span>1999.11.15 天蝎座 infj </span></li>
+                <li><span>电话</span><span>18366404939</span></li>
+            </ul>
+        </div>
+
+        <!-- 旅行地区 -->
+        <h2 class="section-title">🌏 旅行足迹</h2>
+        <div class="travel-grid">
+            <div class="place">聊城</div>
+            <div class="place">上海</div>
+            <div class="place">深圳</div>
+            <div class="place">成都</div>
+            <div class="place">厦门</div>
+            <div class="place">珠海</div>
+            <div class="place">长春</div>
+            <div class="place">济南</div>
+            <div class="place">香港</div>
+            <div class="place">澳门</div>
+            <div class="place">美国华盛顿</div>
+        </div>
+
+        <!-- 个人作品 -->
+        <h2 class="section-title">✍️ 个人作品</h2>
+
+        <div class="work-card" onclick="toggleWork(this)">
+            <div class="work-header">
+                <h3 class="work-title">幸福</h3>
+                <span class="work-toggle">+</span>
+            </div>
+            <div class="work-content">
+那些苦难都会历经风霜变成珍珠
+那些不会被打倒的普通人最坚强
+你爱你自己
+舍不得自己受委屈
+受了委屈呢
+坚强的走下去
+只有自己了解自己
+爱情只是糖衣炮弹
+大家都忙
+他不懂没人懂
+大家只想要你的美丽你的聪明你的价值
+任何的敏感气愤都得靠自己
+任何的迷茫彷徨焦虑恐惧都得靠自己
+说给别人听只会是双倍的痛苦
+咬牙坚持
+而二十多岁的你困住自己的想法何其多
+多在意别人的评价
+多在意自己的付出值不值得
+多想得到钱
+多想得到爱
+后来你不缺钱
+后来你也不缺爱
+后来你不在意评价
+后来你不在意有没有得到回报
+后来你明白无所谓
+你总能想出办法
+保护自己这事只能靠自己
+你总能做到
+哪怕远离
+哪怕僵持不下
+每次大战你都没有退缩
+事后才知道委屈
+工作也是生活的重心
+怎么把工作做好
+什么是幸福
+爱情里的拥抱
+工作里的认可
+            </div>
+        </div>
+
+        <div class="work-card" onclick="toggleWork(this)">
+            <div class="work-header">
+                <h3 class="work-title">勇气</h3>
+                <span class="work-toggle">+</span>
+            </div>
+            <div class="work-content">
+摔了跟头 不怕 看清楚 跨过去
+永远将坎踩在脚下
+只配被我踩在脚下
+我是王者
+我必踏破这世间一切的枷锁
+蔑视一切
+            </div>
+        </div>
+
+        <div class="work-card" onclick="toggleWork(this)">
+            <div class="work-header">
+                <h3 class="work-title">痛苦</h3>
+                <span class="work-toggle">+</span>
+            </div>
+            <div class="work-content">
+笑不出来的时候笑一笑就开心啦
+荒诞现实
+死亡生存
+现实理想
+痛苦像枷锁
+束缚住手脚
+束缚住思考
+很痛很痛
+胃很痛
+心很痛
+这两个器官离太近了
+感受像一样的
+            </div>
+        </div>
+
+        <div class="work-card" onclick="toggleWork(this)">
+            <div class="work-header">
+                <h3 class="work-title">主角</h3>
+                <span class="work-toggle">+</span>
+            </div>
+            <div class="work-content">
+如梦似幻
+霓虹灯转
+到哪里都是要员是主角
+我如耀眼繁星
+自顾自的闪耀
+不顾那些网爆
+活该他们赚不到钱
+            </div>
+        </div>
+
+        <div class="work-card" onclick="toggleWork(this)">
+            <div class="work-header">
+                <h3 class="work-title">自愈</h3>
+                <span class="work-toggle">+</span>
+            </div>
+            <div class="work-content">
+我一个人呆着
+把破碎的自己重新拼起来
+            </div>
+        </div>
+
+        <div class="work-card" onclick="toggleWork(this)">
+            <div class="work-header">
+                <h3 class="work-title">孤独</h3>
+                <span class="work-toggle">+</span>
+            </div>
+            <div class="work-content">
+一个人爱与平静
+两个人害怕烦躁自卑无聊孤独
+不如在两个房间各自安安静静的呆着
+想要一个人的领地
+不要冰冷的金属
+不要被太亲密和太不亲密人占领领地
+太亲密的人容易摧毁我
+太不亲密的人容易窥探到我的生活
+            </div>
+        </div>
+
+        <div class="work-card" onclick="toggleWork(this)">
+            <div class="work-header">
+                <h3 class="work-title">高考</h3>
+                <span class="work-toggle">+</span>
+            </div>
+            <div class="work-content">
+今天天气很好
+很适合展翅翱翔
+希望我的女孩能得偿所愿
+            </div>
+        </div>
+
+    </div>
+
+    <button class="theme-toggle" id="toggle">🌙</button>
+
+    <script>
+        // 作品展开收起
+        function toggleWork(el) {
+            const content = el.querySelector('.work-content');
+            const btn = el.querySelector('.work-toggle');
+            content.classList.toggle('show');
+            btn.textContent = content.classList.contains('show') ? '−' : '+';
+        }
+
+        // 暗色模式
+        const toggle = document.getElementById('toggle');
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>
